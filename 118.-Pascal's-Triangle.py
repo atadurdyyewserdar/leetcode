@@ -11,22 +11,17 @@
 # Input: numRows = 1
 # Output: [[1]]
 
-from typing import List
-
-def pascalTriangle(n: int) -> List[List[int]]:
-    if n == 0:
-        return [[]]
-    elif n == 1:
-        return [[1]]
-
-    ls = [[1]]
-
-    for i in range(1, n):
-        prev = ls[i - 1]
-        row = [1]
-        for j in range(1, len(prev)):
-            sum = prev[j] + prev[j - 1]
-            row.append(sum)
-        row.append(1)
-        ls.append(row)
-    return ls
+class Solution:
+    def generate(self, n: int) -> List[List[int]]:
+        if n == 1:
+            return [[1]]
+        ls = [[1]]
+        for i in range(1, n):
+            prev = ls[i - 1]
+            row = [1]
+            for j in range(1, len(prev)):
+                sum = prev[j] + prev[j - 1]
+                row.append(sum)
+            row.append(1)
+            ls.append(row)
+        return ls
